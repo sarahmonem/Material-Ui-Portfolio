@@ -1,24 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Header from "./Header";
+import {
+  makeStyles,
+  createMuiTheme,
+  MuiThemeProvider,
+  ThemeProvider
+} from "@material-ui/core/styles";
+import Cards from "./Cards";
+import { amber } from "@material-ui/core/colors";
+import AccordionSection from "./AccordionSection";
+import { Container } from "@material-ui/core";
+import Services from "./Services";
+
+const theme = createMuiTheme({
+  typography: {
+    fontFamily: '"Oswald" , sans-serif'
+  },
+  palette: {}
+});
+const useStyles = makeStyles(theme => {
+  return {
+    root: {}
+  };
+});
 
 function App() {
+  const classes = useStyles();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className={classes.root}>
+        <Container>
+          <Header />
+          <Cards />
+          <Services />
+          <AccordionSection />
+        </Container>
+      </div>
+    </ThemeProvider>
   );
 }
 
